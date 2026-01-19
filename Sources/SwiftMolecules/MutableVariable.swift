@@ -20,3 +20,14 @@ public class MutableVariable<Value>: Variable<Value> {
 
 // MARK: Self: Sendable
 extension MutableVariable: @unchecked Sendable where Value: Sendable {}
+
+// MARK: Variable (EX)
+public extension Variable {
+    var mutable: MutableVariable<Value> {
+        if let reference = self as? MutableVariable<Value> {
+            reference
+        } else {
+            .init(value)
+        }
+    }
+}
