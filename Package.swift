@@ -14,7 +14,7 @@ public enum UpcomingFeatures: String, CaseIterable {
     case inferIsolatedConformances
     case valueGenerics
 
-    var asSetting: SwiftSetting { .enableUpcomingFeature(rawValue.capitalized) }
+    var asSetting: SwiftSetting { .enableUpcomingFeature(rawValue.prefix(1).uppercased() + rawValue.dropFirst()) }
 }
 
 public extension Array where Element == SwiftSetting {
